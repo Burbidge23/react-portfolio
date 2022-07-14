@@ -54,29 +54,20 @@ export default class App extends Component {
     return axios.get('https://api.devcamp.space/logged_in', { 
       withCredentials: true
     }).then(response => {
-      console.log(response)
       const loggedIn = response.data.logged_in;
       const loggedInStatus = this.state.loggedInStatus;
 
-      console.log('loggedIn', loggedIn)
-      console.log('loggedInStatus', loggedInStatus)
       // If loggedIn and status LOGGED_IN => return data
       // If loggedIn, status NOT_LOGGED_IN => update state
       // If not loggedIn and status LOGGED_IN => update state
 
       if (loggedIn && loggedInStatus === "LOGGED_IN") {
-        console.log('loggedIn', loggedIn)
-        console.log('LoggedInStatus', loggedInStatus)
         return loggedIn;
       } else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
-        console.log('loggedIn', loggedIn)
-        console.log('LoggedInStatus', loggedInStatus)
         this.setState({
           loggedInStatus: "LOGGED_IN"
         })
       } else if (!loggedIn && loggedInStatus === "LOGGED_IN") {
-        console.log('loggedIn', loggedIn)
-        console.log('LoggedInStatus', loggedInStatus)
         this.setState({
           loggedInStatus: "NOT_LOGGED_IN"
         })
